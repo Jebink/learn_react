@@ -6,6 +6,6 @@ import HelloComp from "./components/class_comp"
 
 
 function App(){
-  return <HelloComp/>
+  return <HelloComp name="Jebin"/>
 }
 export default App;
