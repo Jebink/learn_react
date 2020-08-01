@@ -1,24 +1,57 @@
-// life cycle process demo 1
 import React from 'react';
-class Timer extends React.Component {
+import ReactDOM from 'react-dom';
+
+
+var course = [  {id: 1, name: "Angular", educator: "Rob"},
+                {id: 2, name: "ReactJS", educator: "John"},
+                {id: 3, name: "Ajax", educator: "Mack"}
+            ];
+class Educator extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { secondsElapsed: 0 };
+        this.state = { courseData: course, selected: false };
+        console.log("Initialization Phase: 'constructor()' executed");
+        
     }
-    start =()=>{
-        this.setState({ secondsElapsed: this.state.secondsElapsed + 1 });
+    componentWillMount = () => {
+        console.log("Mounting Phase: 'componentWillMount()' executed");  
     }
-    componentWillMount() {
-        alert('Component mounted');
-
+    
+    render = () => {
+        var users = this.state.courseData;
+        console.log("Mounting Phase: 'render()' executed");
+        return (
+        <div>
+            <h4>UI Courses list</h4>
+            <div> { 
+                users.map((userDetails)=> { 
+                    return (<div key={userDetails.id}>
+                        <b>Course: </b>{userDetails.name} <br/> 
+                        <b>Educator: </b>{userDetails.educator} <br/>
+                        <button onClick={this.clickHandler}>Details</button><br/><br/>
+                    </div>);
+                })}
+            </div>
+            <button onClick={this.exitComponent}>Exit</button>
+        </div>
+        );  
     }
-    // componentDidMount() {
-    //     this.interval = setInterval(this.start, 1000);
+    // shouldComponentUpdate() {
+    //     console.log("Mounting Phase: 'componentDidMount()' executed");  
     // }
-    render() {
-        return (<div>
-            <h2>Seconds Elapsed: {this.state.secondsElapsed}</h2>
-        </div>);
+    componentDidMount = () => {
+        console.log("Mounting Phase: 'componentDidMount()' executed");  
+    }
+    clickHandler = () => {
+        console.log("Details button is clicked, state will change...");
+        this.setState({ selected: true });
+    }
+    exitComponent = () => {
+        console.log("Exit button is clicked, component will be destroyed");
+        ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+    }
+    componentWillUnmount = () => {
+        console.log("Un-Mounting Phase: 'componentWillUnmount()' executed");
     }
 }
-export default Timer;
+export default Educator;
