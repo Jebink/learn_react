@@ -1,11 +1,14 @@
-import React from 'react';
-// import logo from './logo.svg';
+import React from "react";
+import "./App.css";
+import Main from "./components/Main";
+import Navbar from "./components/Navbar";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import HelloComp from "./components/class_comp"
-
-
-function App(){
-  return <HelloComp/>
+function App() {
+  return (
+    <div className="container">
+      <Navbar />
+      <Main />
+    </div>
+  );
 }
 export default App;
