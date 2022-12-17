@@ -6,14 +6,12 @@ Hint: use the Figma file for the most accurate peek at the design
 */
 
 import React from "react";
-import react_icon from "../images/react-icon-small.png";
+import airbnb_icon from "../images/airbnb-logo.png";
 
 export default function Navbar() {
   return (
     <nav>
-      <img src={react_icon} className="nav--icon" alt="react-icon" />
-      <h3 className="nav--logo_text">ReactFacts</h3>
-      <h4 className="nav--title">React Course - Project 1</h4>
+      <img src={airbnb_icon} className="nav--icon" alt="airbnb-icon" />
     </nav>
   );
 }
